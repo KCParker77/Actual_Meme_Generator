@@ -8,12 +8,14 @@ export default function Meme() {
     })
     const [allMemes, setAllMemes] = React.useState([])
     
+    // Grabbing the meme images
     React.useEffect(() => {
         fetch("https://api.imgflip.com/get_memes")
             .then(res => res.json())
             .then(data => setAllMemes(data.data.memes))
     }, [])
     
+    // Gets a random image from meme array
     function getMemeImage() {
         const randomNumber = Math.floor(Math.random() * allMemes.length)
         const url = allMemes[randomNumber].url
